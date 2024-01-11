@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.min.js"></script>
+    <title>Sistema de Notícias</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="text-center">
+    <!-- Adicione um botão com um ID para que possa ser referenciado no script -->
+    <button id="botaoSayNew" class="btn btn-primary">Reproduzir Notícia</button>
+</div>
+
+<script>
+    // Função para carregar o script do Howler.js antes de executar o resto do código
+    function loadScript(src, callback){
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        script.onload = callback;
+        document.head.appendChild(script);
+    }
+
+    // Carregue o script do Howler.js antes de continuar
+    loadScript('https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.3/howler.min.js', function(){
+        // Agora, o Howler.js está disponível e podemos usar suas funcionalidades
+
+        // Função que reproduzirá o áudio
+        function say_new() {
+            console.log('Clicou no botão. Tentando reproduzir áudio...');
+
+            var audioFiles = [
+            '../news/noticia1.mp3',
+            '../news/noticia2.mp3',
+            '../news/noticia3.mp3',
+            '../news/noticia4.mp3',
+            '../news/noticia5.mp3',
+            '../news/noticia6.mp3',
+            '../news/noticia7.mp3',
+            '../news/noticia8.mp3',
+            '../news/noticia9.mp3',
+            '../news/noticia10.mp3',
+            '../news/noticia11.mp3',
+            '../news/noticia12.mp3',
+            '../news/noticia13.mp3',
+            '../news/noticia14.mp3',
+            '../news/noticia15.mp3',
+            '../news/noticia16.mp3',
+            '../news/noticia17.mp3',
+            '../news/noticia18.mp3',
+            '../news/noticia19.mp3',
+            '../news/noticia20.mp3',
+            '../news/noticia21.mp3',
+            '../news/noticia22.mp3',
+            '../news/noticia23.mp3',
+            '../news/noticia24.mp3',
+            '../news/noticia25.mp3',
+            '../news/noticia26.mp3',
+            '../news/noticia27.mp3',
+            '../news/noticia28.mp3',
+            '../news/noticia29.mp3',
+            '../news/noticia30.mp3',
+            '../news/noticia31.mp3',
+            '../news/noticia32.mp3',
+            '../news/noticia33.mp3',
+            '../news/noticia34.mp3',
+            '../news/noticia35.mp3'
+            ];
+
+            var randomAudio = audioFiles[Math.floor(Math.random() * audioFiles.length)];
+
+            var sound = new Howl({
+                src: [randomAudio],
+                volume: 1.0,
+                onplayerror: function () {
+                    console.error('Erro ao iniciar a reprodução de áudio.');
+                },
+                onloaderror: function () {
+                    console.error('Erro ao carregar o arquivo de áudio.');
+                },
+                onend: function () {
+                    console.log('Reprodução de áudio concluída.');
+                }
+            });
+
+            sound.play();
+        }
+
+        // Certifique-se de que a função seja chamada após o carregamento do documento
+        document.addEventListener('DOMContentLoaded', function () {
+            // Obtenha o botão pelo ID e atribua a função ao evento de clique
+            var button = document.getElementById('botaoSayNew');
+            button.addEventListener('click', say_new);
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
